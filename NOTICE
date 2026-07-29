@@ -1,0 +1,14 @@
+dora-openarm-actions-executor-rust
+Copyright 2026 Enactic, Inc.
+
+This product includes software developed at Enactic, Inc.
+
+This work is a Rust port of dora-openarm-actions-executor:
+
+    https://github.com/enactic/dora-openarm-actions-executor
+
+    Copyright 2026 Enactic, Inc.
+    Licensed under the Apache License, Version 2.0.
+
+The original Python implementation and this port are both licensed under
+the Apache License, Version 2.0. See the LICENSE file for the full terms.

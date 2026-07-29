@@ -1,0 +1,40 @@
+[package]
+name = "dora-openarm-actions-executor-rust"
+version = "1.1.0"
+authors = ["Enactic, Inc."]
+description = "dora-rs node that executes timestamped actions (Rust port of dora-openarm-actions-executor)"
+license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/k1000dai/dora-openarm-actions-executor-rust"
+edition = "2024"
+rust-version = "1.85"
+
+[lib]
+name = "dora_openarm_actions_executor_rust"
+path = "src/lib.rs"
+
+[[bin]]
+name = "dora-openarm-actions-executor"
+path = "src/main.rs"
+
+[dependencies]
+# Pinned to the Arrow version that dora-node-api 0.5.0 depends on, so that
+# `ArrayRef` values cross the library/adapter boundary as the same type.
+arrow = "=54.2.1"
+dora-node-api = { version = "0.5.0", default-features = false }
+eyre = "0.6"
+
+[lints.rust]
+missing_docs = "warn"
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+# This crate ports Python trajectory/DSP math (numpy-style float64
+# arithmetic, array indices, nanosecond timestamps) verbatim; the casts
+# between f32/f64/i64/usize this requires are intentional and match
+# upstream's own untyped numeric behavior.
+cast_precision_loss = "allow"
+cast_possible_truncation = "allow"
+cast_sign_loss = "allow"
