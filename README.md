@@ -51,11 +51,10 @@ between raw rows), `cutoff_hz` (optional, default `15.0`), and `reset`
    token, like upstream's plain Python list membership check) takes 8
    elements (7 joints + 1 gripper) off the step's joined position vector,
    in right-then-left order, and is sent on its own output id
-   (`move_position_right`/`move_position_left`) only if enabled. If both
-   arms are enabled, each output is a `StructArray` of `new_position` (its
-   own position) and `other_arm_position` (the other arm's position at
-   that same step); if only one arm is enabled, its output is a plain
-   `Float32` array.
+   (`move_position_right`/`move_position_left`) only if enabled. Every
+   enabled arm uses the canonical length-one Arrow schema
+   `[{"qpos": float32[8]}]`; the legacy `new_position` /
+   `other_arm_position` envelope and flat single-arm output are not emitted.
 
 ## Architecture
 
