@@ -74,7 +74,7 @@ pub fn compute_slopes(t: &[f64], y: &[Vec<f32>]) -> Vec<Vec<f32>> {
             slopes[i][col] = if prev * next <= 0.0 {
                 0.0
             } else {
-                0.5 * (prev + next)
+                prev.midpoint(next)
             };
         }
     }
