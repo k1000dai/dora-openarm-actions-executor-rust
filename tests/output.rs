@@ -36,7 +36,7 @@ fn only_right_arm_sends_a_canonical_qpos_struct() {
         &[FieldRef::new(Field::new(
             "qpos",
             DataType::List(FieldRef::new(Field::new("item", DataType::Float32, true,))),
-            false,
+            true,
         ))]
     );
     let qpos = array

@@ -33,7 +33,7 @@ fn qpos_array(position: &[f32]) -> ArrayRef {
     let length = i32::try_from(position.len()).expect("a joint position row fits in i32");
     let offsets = OffsetBuffer::new(ScalarBuffer::from(vec![0_i32, length]));
     let list: ArrayRef = Arc::new(ListArray::new(item_field, offsets, values, None));
-    let fields = Fields::from(vec![Field::new("qpos", list.data_type().clone(), false)]);
+    let fields = Fields::from(vec![Field::new("qpos", list.data_type().clone(), true)]);
     Arc::new(
         StructArray::try_new(fields, vec![list], None)
             .expect("single-field qpos struct is always valid"),
